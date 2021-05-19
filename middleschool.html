@@ -1,0 +1,146 @@
+<html>
+
+<head>
+
+    <link type="text/css" rel="stylesheet" href="stylesheet2.css">
+
+    <link type="text/css" rel="stylesheet" href="jquery-ui-1.12.1.custom/jquery-ui.min.css">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+</head>
+
+<body id="middleschool">
+
+    <nav>
+        <p>DRAG SPACE TO EXPLORE</p>
+        <br>
+        <p>DRAG OBJECTS INTO THEIR ROOM TO READ MEMORIES</p>
+        <br>
+        <a href="future.html">FUTURE</a>
+        <br>
+        <a href="childhood.html">PAST</a>
+        <br>
+    </nav>
+
+
+    <div id="pinkspace">
+
+        <div id="lockers">
+            <p>lockers</p>
+        </div>
+
+        <div id="friendshouse">
+            <p>friend's house</p>
+        </div>
+
+        <div id="classroom">
+            <p>classroom</p>
+        </div>
+
+        <div id="mathbear" class="tallbox">
+            <img src="images/mathbear.png">
+        </div>
+
+        <div id="seal" class="smolbox">
+            <img src="images/seal.png">
+        </div>
+
+        <div id="bowl" class="squarebox">
+            <img src="images/bowl.png">
+        </div>
+
+        <div id="duck" class="squarebox">
+            <img src="images/duck.png">
+        </div>
+
+        <div id="bearbag" class="squarebox">
+            <img src="images/bearbag.png">
+        </div>
+
+        <div id="metalcat" class="smolbox">
+            <img src="images/metalcat.png">
+        </div>
+
+    </div>
+
+    <div id="dialogMathbear" title="math bear">
+        <p>they gave me this stuffed bear after a math competition i did in 8th grade (?) was it Kangaroo math?? why did they give me a bear..? i'm not sure why i tried so hard to be a math person but it clearly didn't work out. anyways, getting a stuffed bear was better than any math that i did..</p>
+    </div>
+
+    <div id="dialogSeal" title="stuffed seal i made">
+        <p>this silly looking seal i made in 7th grade Life Skills. they stopped having Life Skills as a class a few years later which is unfortunate because all we did was make cookies and sew. during the sewing unit we made pillows and i chose this disgusting shade of hot pink fabric to use. it was a still a good time.</p>
+    </div>
+
+    <div id="dialogBowl" title="small ceramic bowl">
+        <p>Emily made us all little things when she took ceramics in high school. i think they might have all been bowls actually. my middle school friends used to call me "Linny" but we don't talk so much anymore. i usually just kept coins in this bowl..</p>
+    </div>
+
+    <div id="dialogDuck" title="small duck magnet">
+        <p>i think Marissa gave me this tiny duck magnet in 6th grade. she had a bunch in her locker. she also had these cool color changing pencils from the fire department because her dad was a fireman ??</p>
+    </div>
+
+    <div id="dialogBearbag" title="bear bag">
+        <p>there was a fundraiser at school where there was just a bunch of things you could buy in the gym as gifts for family and friends, but i bought myself this bear bag because i liked it.</p>
+    </div>
+
+    <div id="dialogMetalcat" title="small metal cat">
+        <p>i forget who had all these metal animals in middle school (it might have been Rhea) but we each got one and this cat was supposed to be for Kayla because she had 3 of them. i somehow managed to get the cat instead.</p>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+
+            $("#pinkspace").draggable();
+
+            var sPositions = localStorage.positions || "{}",
+                positions = JSON.parse(sPositions);
+            $.each(positions, function (id, pos) {
+                $("#" + id).css(pos)
+            })
+
+            $("#mathbear, #duck, #bowl, #seal, #metalcat, #bearbag").draggable({
+                containment: "#pinkspace",
+                stop: function (event, ui) {
+                    positions[this.id] = ui.position
+                    localStorage.positions = JSON.stringify(positions)
+                }
+            });
+
+            $("#lockers").droppable({
+                accept: "#duck",
+                drop: function (event, ui) {
+                    $("#dialogDuck").dialog();
+                }
+            });
+
+            $("#friendshouse").droppable({
+                accept: "#bowl, #metalcat",
+                drop: function (event, ui) {
+                    if (ui.draggable.is("#bowl")) {
+                        $("#dialogBowl").dialog();
+                    } else {
+                        $("#dialogMetalcat").dialog();
+                    }
+                }
+            });
+
+            $("#classroom").droppable({
+                accept: "#bearbag, #mathbear, #seal",
+                drop: function (event, ui) {
+                    if (ui.draggable.is("#bearbag")) {
+                        $("#dialogBearbag").dialog();
+                    } else if (ui.draggable.is("#mathbear")) {
+                        $("#dialogMathbear").dialog();
+                    } else {
+                        $("#dialogSeal").dialog();
+                    }
+                }
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>

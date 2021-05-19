@@ -1,0 +1,315 @@
+#childhood {
+    background-image: url(images/flowers.png);
+    padding: 0;
+    border: 0;
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+#middleschool {
+    background-image: url(images/halftone.png);
+    padding: 0;
+    border: 0;
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+#future {
+    background-image: url(images/grid.png);
+    padding: 0;
+    border: 0;
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+nav {
+    width: 150px;
+    height: 100px;
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    font-family: 'roboto mono';
+    z-index: 3;
+}
+
+a {
+    font-family: times new roman;
+    font-style: italic;
+    font-size: 30px;
+    color: green;
+}
+
+a:hover {
+    color: blue;
+}
+
+#yellowspace {
+    background-color: #ffe177;
+    width: 1500px;
+    height: 800px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -400px 0 0 -750px;
+}
+
+#pinkspace {
+    background-color: #ffe5f5;
+    width: 1500px;
+    height: 800px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -400px 0 0 -750px;
+}
+
+#greenspace {
+    background-color: #85c689;
+    width: 1500px;
+    height: 800px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -400px 0 0 -750px;
+}
+
+#myroom {
+    background-color: #ff4621;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 400px;
+    height: 200px;
+}
+
+#myroom,
+#school,
+#lockers,
+#friendshouse,
+#classroom,
+#vegas,
+#studio,
+#home p {
+    font-family: 'space mono';
+    text-align: center;
+}
+
+#school {
+    background-color: #33b761;
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    right: 160px;
+    bottom: 100px;
+}
+
+#lockers {
+    background-color: #6070ea;
+    position: absolute;
+    width: 180px;
+    height: 220px;
+    right: 400px;
+    top: 50px;
+}
+
+#friendshouse {
+    background-color: #73c479;
+    position: absolute;
+    width: 280px;
+    height: 130px;
+    left: 120px;
+    top: 190px;
+}
+
+#classroom {
+    background-color: #ffce66;
+    position: absolute;
+    width: 280px;
+    height: 200px;
+    right: 400px;
+    bottom: 0px;
+}
+
+#home {
+    background-color: #ffceee;
+    position: absolute;
+    width: 280px;
+    height: 200px;
+    right: 0px;
+    bottom: 0px;
+}
+
+#vegas {
+    background-color: #ffda7f;
+    position: absolute;
+    width: 280px;
+    height: 200px;
+    right: 400px;
+    top: 30px;
+}
+
+#studio {
+    background-color: #ff6a54;
+    position: absolute;
+    width: 280px;
+    height: 200px;
+    left: 200px;
+    bottom: 300px;
+}
+
+.squarebox {
+    width: 70px;
+    height: 70px;
+    /* margin: 90px; */
+    border: black solid 3px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+}
+
+.shortbox {
+    width: 100px;
+    height: 75px;
+    /* margin: 40px 200px 140px 500px; */
+    border: black solid 3px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+}
+
+.tallbox {
+    width: 90px;
+    height: 110px;
+    /* margin: 100px 140px 50px 90px; */
+    border: black solid 3px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+}
+
+.smolbox {
+    width: 45px;
+    height: 50px;
+    /* margin: 40px 100px 20px 300px; */
+    border: black solid 3px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+}
+
+#featherpen,
+#pixelchick,
+#tamagotchi {
+    border: 2px solid #ff4621;
+}
+
+#sandbox {
+    border: 2px solid #33b761;
+}
+
+#bowl,
+#metalcat {
+    border: 2px solid #73c479;
+}
+
+#duck {
+    border: 2px solid #6070ea;
+}
+
+#bearbag,
+#mathbear,
+#seal {
+    border: 2px solid #ffce66;
+}
+
+#baby {
+    border: 2px solid #ff6a54;
+}
+
+#heart {
+    border: 2px solid #ffda7f;
+}
+
+#cat,
+#tardis {
+    border: 2px solid #ffceee;
+}
+
+img {
+    display: inline-block;
+    margin: -10px;
+    width: auto;
+    height: 120%;
+    z-index: -1;
+}
+
+h1 {
+    font-family: 'space mono';
+    font-size: 10px;
+    font-weight: normal;
+    margin: 5px 5px 0px 5px;
+}
+
+#enter {
+    animation: bgChange 7s steps(1) infinite;
+}
+
+@keyframes bgChange {
+    0% {
+        background-color: #ffde59;
+    }
+    25% {
+        background-color: #acc9f2;
+    }
+    50% {
+        background-color: #ffb640;
+    }
+    75% {
+        background-color: #40fff2;
+    }
+}
+
+#enterroom {
+    font-family: 'space mono';
+    font-size: 30px;
+    position: fixed;
+    left: 39%;
+    top: 43%;
+}
+
+.ui-widget-header {
+    font-family: 'space mono';
+}
+
+.ui-widget-content {
+    font-family: 'space mono';
+    font-size: .9em;
+}
+
+.ui-widget-shadow {
+    box-shadow: 10px 10px 10px 7px rgba(0, 0, 0, 0.1);
+}
+
+#dialogMathbear,
+#dialogSandbox,
+#dialogDuck,
+#dialogTamagotchi,
+#dialogFeatherpen,
+#dialogPixelchick,
+#dialogBowl,
+#dialogMetalcat,
+#dialogBearbag,
+#dialogSeal,
+#dialogTardis,
+#dialogCat,
+#dialogBaby,
+#dialogHeart {
+    display: none;
+}

@@ -1,0 +1,124 @@
+<html>
+
+<head>
+
+    <link type="text/css" rel="stylesheet" href="stylesheet2.css">
+
+    <link type="text/css" rel="stylesheet" href="jquery-ui-1.12.1.custom/jquery-ui.min.css">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+
+</head>
+
+<body id="future">
+
+    <nav>
+        <p>DRAG SPACE TO EXPLORE</p>
+        <br>
+        <p>DRAG OBJECTS INTO THEIR ROOM TO READ MEMORIES</p>
+        <br>
+        <!-- <a href="">FUTURE</a><br> -->
+        <a href="middleschool.html">PAST</a>
+        <br>
+    </nav>
+
+    <div id="greenspace">
+
+        <div id="studio">
+            <p>studio</p>
+        </div>
+
+        <div id="vegas">
+            <p>vegas</p>
+        </div>
+
+        <div id="home">
+            <p>home</p>
+        </div>
+
+        <div id="cat" class="shortbox">
+            <img src="images/cat.png">
+        </div>
+
+        <div id="baby" class="tallbox">
+            <img src="images/baby.png">
+        </div>
+
+        <div id="heart" class="smolbox">
+            <img src="images/heart.png">
+        </div>
+
+        <div id="tardis" class="shortbox">
+            <img src="images/tardis.png">
+        </div>
+
+        <div id="dialogCat" title="cat bracelet">
+            <p>my brother, when he went to China for something table tennis related, got me this cat bracelet. it even has my Chinese name on it. it's hard to wear but it was a nice thought i guess.</p>
+        </div>
+
+        <div id="dialogBaby" title="creepy baby">
+            <p>i didn't really need this creepy baby but Juliette gave it to me towards the end of the semester sophomore year. we were at her desk and she let me have this doll. so honored to receive a piece of her very large collection of babies..</p>
+        </div>
+
+        <div id="dialogHeart" title="heart eraser">
+            <p>from the Bodies exhibition in Vegas. my brother had a table tennis tournament in Las Vegas during winter break of freshmen year. spent a lot of time going to different hotels to see their Christmas displays it was alright. i got this tiny heart eraser at the end of the exhibit and now i will never use it. i saw a lot of preserved organs and vessels.</p>
+        </div>
+
+        <div id="dialogTardis" title="doctor who band">
+            <p>i used to work at Kumon junior year of highschool and this kid named Gustavo was really friendly to me. he was so sweet. when i left, he gave me a card and got this Doctor Who band for me because we both liked it at the time.. aa i was so touched. i never wear it but i couldn't throw it away either.</p>
+        </div>
+
+    </div>
+
+    <script>
+        $(document).ready(function () {
+
+            $("#greenspace").draggable();
+
+            var sPositions = localStorage.positions || "{}",
+                positions = JSON.parse(sPositions);
+            $.each(positions, function (id, pos) {
+                $("#" + id).css(pos)
+            })
+
+            $("#cat, #baby, #heart, #tardis").draggable({
+                containment: "#greenspace",
+                stop: function (event, ui) {
+                    positions[this.id] = ui.position
+                    localStorage.positions = JSON.stringify(positions)
+                }
+            });
+
+            $("#vegas").droppable({
+                accept: "#heart",
+                drop: function (event, ui) {
+                    $("#dialogHeart").dialog();
+                }
+            });
+
+            $("#home").droppable({
+                accept: "#cat, #tardis",
+                drop: function (event, ui) {
+                    if (ui.draggable.is("#cat")) {
+                        $("#dialogCat").dialog();
+                    } else {
+                        $("#dialogTardis").dialog();
+                    }
+                }
+            });
+
+            $("#studio").droppable({
+                accept: "#baby",
+                drop: function (event, ui) {
+                    $("#dialogBaby").dialog();
+                }
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>
